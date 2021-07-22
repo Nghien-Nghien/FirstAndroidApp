@@ -10,7 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="Hello the Earth!"
-        android:textSize="30dp"/>
+        android:text="Hello Word!"
+        android:textSize="30dp"
+        android:textColor="@color/black" />
 
 </RelativeLayout>
