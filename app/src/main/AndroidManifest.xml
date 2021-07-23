@@ -18,7 +18,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity2"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.FirstAndroidApp.SlidrActivity">
+        </activity>
     </application>
 
 </manifest>

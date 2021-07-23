@@ -24,8 +24,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (textId.getText().toString().equals("") || textPassword.getText().toString().equals("")) {
                     Toast.makeText(MainActivity.this, "You not yet input username or password. Please recheck!", Toast.LENGTH_LONG).show();
-                } else {
+                } else if (textId.getText().toString().equals("Admin") && textPassword.getText().toString().equals("Android")) {
                     openActivity2();
+                }
+                else {
+                    Toast.makeText(MainActivity.this,"Wrong input",Toast.LENGTH_SHORT).show();
                 }
             }
         });
