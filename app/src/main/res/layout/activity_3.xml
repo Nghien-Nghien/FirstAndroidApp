@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Activity3">
 
     <TextView
         android:id="@+id/textview1"
@@ -37,24 +37,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_below="@+id/textview2"
-        android:inputType="textPassword" />
+        android:layout_below="@+id/textview2" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_send_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Touch to unlock" />
-
-    <Button
-        android:id="@+id/button_activity3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Go to Activity 3"
-        android:layout_below="@+id/button" />
+        android:text="Return to Main Activity" />
 
 </RelativeLayout>
