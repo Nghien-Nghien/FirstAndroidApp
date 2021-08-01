@@ -1,9 +1,7 @@
 package com.example.firstandroidapp;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,20 +12,30 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    EditText textId;
+    EditText textPassword;
+    Button button_Activity2;
+    Button button_Activity3;
+    Button button_Activity4;
+    TextView showIdPass;
+    TextView showPass;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        EditText textId = findViewById(R.id.edittext1);
-        EditText textPassword = findViewById(R.id.edittext2);
-        Button button = findViewById(R.id.button);
-        Button button_Activity3 = findViewById(R.id.button_activity3);
-        button.setOnClickListener(new View.OnClickListener() {
+        textId = findViewById(R.id.edittext1);
+        textPassword = findViewById(R.id.edittext2);
+        button_Activity2 = findViewById(R.id.button_activity2);
+        button_Activity3 = findViewById(R.id.button_activity3);
+        button_Activity4 = findViewById(R.id.button_activity4);
+
+        button_Activity2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (textId.getText().toString().equals("") || textPassword.getText().toString().equals("")) {
-                    Toast.makeText(MainActivity.this, "You not yet input username or password. Please recheck!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "You not yet input username or password. Please recheck!", Toast.LENGTH_SHORT).show();
                 } else if (textId.getText().toString().equals("Admin") && textPassword.getText().toString().equals("Android")) {
                     openActivity2();
                 } else {
@@ -42,12 +50,28 @@ public class MainActivity extends AppCompatActivity {
                 if (textId.getText().toString().equals("") || textPassword.getText().toString().equals("")) {
                     Toast.makeText(MainActivity.this, "Please input both ID & Pass", Toast.LENGTH_SHORT).show();
                 } else {
-                    String ID = String.format(textId.getText().toString());
-                    String Password = String.format(textPassword.getText().toString());
+                    String id = (textId.getText().toString());
+                    String password = (textPassword.getText().toString());
                     Intent intent = new Intent(MainActivity.this, Activity3.class);
-                    intent.putExtra("ID", ID);
-                    intent.putExtra("Password", Password);
+                    intent.putExtra("ID", id);
+                    intent.putExtra("Password", password);
                     startActivityIfNeeded(intent, 1);
+                }
+            }
+        });
+
+        button_Activity4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (textId.getText().toString().equals("") || textPassword.getText().toString().equals("")) {
+                    Toast.makeText(MainActivity.this, "Please input both ID & Pass", Toast.LENGTH_SHORT).show();
+                } else {
+                    String id = (textId.getText().toString());
+                    String password = (textPassword.getText().toString());
+                    Intent intent = new Intent(MainActivity.this, Activity4.class);
+                    intent.putExtra("ID", id);
+                    intent.putExtra("Password", password);
+                    startActivityIfNeeded(intent, 2);
                 }
             }
         });
@@ -62,9 +86,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1 && resultCode == RESULT_OK) {
-            String showinfor = data.getStringExtra("showinfor");
-            EditText showinforinEditText1 = findViewById(R.id.edittext1);
-            showinforinEditText1.setText(showinfor);
+            String showIdAndPass = data.getStringExtra("showIdAndPass");
+            showIdPass = findViewById(R.id.textview3);
+            showIdPass.setText(showIdAndPass);
+        } else if (requestCode == 2 && resultCode == RESULT_OK) {
+            String showOnlyPass = data.getStringExtra("showPass");
+            showPass = findViewById(R.id.textview4);
+            showPass.setText(showOnlyPass);
         }
     }
 }
